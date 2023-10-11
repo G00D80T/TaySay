@@ -1,7 +1,5 @@
 import matplotlib.pyplot as pyplot
 import control.matlab as matlab
-import numpy
-import math
 import colorama
 
 INERTIALESS_UNIT_NAME = 'Безынерционное звено'
@@ -158,5 +156,4 @@ graph(5, 'АФХ', 0, 0)
 graph(6, '', 0,0)# костыль
 pyplot.show()
 [y, x, z] = matlab.bode(unit, ow_line)
-graph(6, 'ЛАЧХ', y, ow_line)
 pyplot.show()
