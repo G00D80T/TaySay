@@ -83,9 +83,9 @@ def get_unit(unit_name):
             t = float(0.000001)
             if k.isdigit():
                 k = int(k)
-                t = float(0.000001)
+                t = float(0.0000001)
                 if unit_name == IDEAL_DIFFERENTIATING_UNIT_NAME:
-                    unit = matlab.tf([k, 0], [t, 1])
+                    unit = matlab.tf([k, 0], [t, 0])
                     need_new_choice = False
                 else:
                     print(colorama.Fore.YELLOW + '\n Не реализовано')
@@ -141,7 +141,7 @@ for i in range(0, 10000):
     time_line.append(i/1000)
 ow_line = []
 for i in range(0, 10000):
-    ow_line.append(i/10)
+    ow_line.append(i/100)
 
 [y, x] = matlab.step(unit, time_line)
 graph(1, 'Переходная характеристика', y,x)
