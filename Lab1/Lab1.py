@@ -80,12 +80,11 @@ def get_unit(unit_name):
                 need_new_choice = True
         elif unit_name == IDEAL_DIFFERENTIATING_UNIT_NAME:
             k = input('Введите коэффициент передачи звена (k): ')
-            t = float(0.000001)
             if k.isdigit():
                 k = int(k)
                 t = float(0.0000001)
                 if unit_name == IDEAL_DIFFERENTIATING_UNIT_NAME:
-                    unit = matlab.tf([k, 0], [t, 0])
+                    unit = matlab.tf([k, 0], [t, 1])
                     need_new_choice = False
                 else:
                     print(colorama.Fore.YELLOW + '\n Не реализовано')
@@ -153,7 +152,7 @@ graph(3, 'АЧХ', y, z)
 graph(4, 'ФЧХ', x, z)
 graph(5, 'АФХ', 0, 0)
 [y, x, z] = matlab.nyquist(unit, ow_line)
-graph(6, '', 0,0)# костыль
+graph(6, '', y,z)# костыль
 pyplot.show()
 [y, x, z] = matlab.bode(unit, ow_line)
 pyplot.show()
